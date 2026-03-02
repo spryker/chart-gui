@@ -34,11 +34,6 @@ class ChartGuiTwigPlugin extends AbstractPlugin implements TwigPluginInterface
         return $this->registerChartTwigFunctions($twig);
     }
 
-    /**
-     * @param \Twig\Environment $twig
-     *
-     * @return \Twig\Environment
-     */
     protected function registerChartTwigFunctions(Environment $twig): Environment
     {
         foreach ($this->getChartTwigFunctions() as $function) {

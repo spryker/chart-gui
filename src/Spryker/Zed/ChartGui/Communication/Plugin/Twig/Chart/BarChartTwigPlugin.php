@@ -19,9 +19,6 @@ class BarChartTwigPlugin extends AbstractChartTwigPlugin
      */
     public const TWIG_FUNCTION_NAME = 'barChart';
 
-    /**
-     * @return string
-     */
     protected function getTemplateName(): string
     {
         return '@ChartGui/Chart/bar-chart.twig';

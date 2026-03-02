@@ -75,9 +75,6 @@ abstract class AbstractChartTwigPlugin extends AbstractPlugin implements TwigCha
         return $rendered;
     }
 
-    /**
-     * @return string
-     */
     abstract protected function getTemplateName(): string;
 
     /**
@@ -102,9 +99,6 @@ abstract class AbstractChartTwigPlugin extends AbstractPlugin implements TwigCha
         return $context;
     }
 
-    /**
-     * @return array
-     */
     protected function getDefaultTwigOptions(): array
     {
         return [
