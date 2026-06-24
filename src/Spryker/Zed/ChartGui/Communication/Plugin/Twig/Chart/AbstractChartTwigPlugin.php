@@ -22,6 +22,8 @@ use Twig\TwigFunction;
 abstract class AbstractChartTwigPlugin extends AbstractPlugin implements TwigChartFunctionPluginInterface
 {
     /**
+     * @api
+     *
      * @var string
      */
     public const TWIG_FUNCTION_NAME = 'chart';
