@@ -1,0 +1,5 @@
+{
+    "include": {
+        "spryker/chart": "Provides the chart plugin interfaces and the Back Office chart script that the chart Twig template loads."
+    }
+}

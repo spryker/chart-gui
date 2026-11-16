@@ -1,0 +1,35 @@
+{% block pieLegendTemplates %}
+    {% include '@ChartGui/Chart/_partials/pie-legend.twig' %}
+{% endblock %}
+
+{% block orderStatusTemplate %}
+    <template data-chart-template="order-status">
+        <div class="chart-plot chart-plot--order-status position-relative mt-3">
+            <div class="position-absolute top-0 start-0 w-100 h-100" data-chart-slot="canvas"></div>
+        </div>
+    </template>
+{% endblock %}
+
+{% block orderStatusSubtitleTemplate %}
+    <template data-chart-template="order-status-subtitle">
+        <div class="small text-body-secondary" data-chart-slot="count"></div>
+    </template>
+{% endblock %}
+
+{% block itemCountTemplate %}
+    <template data-chart-template="item-count">
+        <span>
+            <span data-chart-plural="one">{{ '%count% item' | trans }}</span>
+            <span data-chart-plural="other">{{ '%count% items' | trans }}</span>
+        </span>
+    </template>
+{% endblock %}
+
+{% block orderStatusCenterTemplate %}
+    <template data-chart-template="order-status-center">
+        <div class="position-absolute top-0 start-0 w-100 h-100 d-flex flex-column align-items-center justify-content-center pe-none">
+            <span class="fs-3 fw-semibold lh-sm" data-chart-slot="total"></span>
+            <span class="small text-body-secondary">{{ 'Total items' | trans }}</span>
+        </div>
+    </template>
+{% endblock %}

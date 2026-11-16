@@ -21,8 +21,5 @@ class LineChartTwigPlugin extends AbstractChartTwigPlugin
      */
     public const TWIG_FUNCTION_NAME = 'lineChart';
 
-    protected function getTemplateName(): string
-    {
-        return '@ChartGui/Chart/line-chart.twig';
-    }
+    protected const string CHART_KIND = 'line';
 }

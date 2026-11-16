@@ -7,7 +7,6 @@
 
 namespace Spryker\Zed\ChartGui;
 
-use Generated\Shared\Transfer\ChartLayoutTransfer;
 use Spryker\Zed\Kernel\AbstractBundleConfig;
 
 /**
@@ -15,13 +14,4 @@ use Spryker\Zed\Kernel\AbstractBundleConfig;
  */
 class ChartGuiConfig extends AbstractBundleConfig
 {
-    /**
-     * @api
-     *
-     * @return \Generated\Shared\Transfer\ChartLayoutTransfer
-     */
-    public function getDefaultChartLayout(): ChartLayoutTransfer
-    {
-        return new ChartLayoutTransfer();
-    }
 }

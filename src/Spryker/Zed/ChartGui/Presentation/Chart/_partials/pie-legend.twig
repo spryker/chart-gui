@@ -1,0 +1,27 @@
+{% block legendTemplate %}
+    <template data-chart-template="legend">
+        <ul class="chart-legend list-unstyled mb-0 mt-3 overflow-auto" data-chart-slot="rows"></ul>
+    </template>
+{% endblock %}
+
+{% block legendRowTemplate %}
+    <template data-chart-template="legend-row">
+        <li class="chart-legend__row border-top">
+            <button type="button" class="w-100 h-100 d-flex align-items-center gap-2 p-0 border-0 rounded-0 bg-transparent text-reset text-start focus-ring" data-chart-slot="toggle" data-chart-hidden-class="opacity-50">
+                <span class="chart-marker flex-shrink-0 rounded-1" data-chart-slot="swatch"></span>
+                <span class="flex-grow-1 text-truncate" data-chart-slot="name"></span>
+                <span class="fw-semibold" data-chart-slot="value"></span>
+                <span class="chart-legend__share flex-shrink-0 text-body-secondary text-end" data-chart-slot="share"></span>
+            </button>
+        </li>
+    </template>
+{% endblock %}
+
+{% block pieTooltipTemplate %}
+    <template data-chart-template="pie-tooltip">
+        <div class="d-flex align-items-center gap-1">
+            <span class="chart-marker flex-shrink-0 rounded-circle" data-chart-slot="marker"></span>
+            <span><span data-chart-slot="name"></span>: <b data-chart-slot="value"></b> (<span data-chart-slot="share"></span>)</span>
+        </div>
+    </template>
+{% endblock %}

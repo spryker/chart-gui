@@ -8,6 +8,10 @@
 namespace Spryker\Zed\ChartGui\Communication;
 
 use Spryker\Zed\ChartGui\ChartGuiDependencyProvider;
+use Spryker\Zed\ChartGui\Communication\Resolver\ChartViewResolver;
+use Spryker\Zed\ChartGui\Communication\Resolver\ChartViewResolverInterface;
+use Spryker\Zed\ChartGui\Communication\Twig\ChartAssetRenderer;
+use Spryker\Zed\ChartGui\Communication\Twig\ChartAssetRendererInterface;
 use Spryker\Zed\Kernel\Communication\AbstractCommunicationFactory;
 
 /**
@@ -16,6 +20,16 @@ use Spryker\Zed\Kernel\Communication\AbstractCommunicationFactory;
  */
 class ChartGuiCommunicationFactory extends AbstractCommunicationFactory
 {
+    public function createChartViewResolver(): ChartViewResolverInterface
+    {
+        return new ChartViewResolver();
+    }
+
+    public function createChartAssetRenderer(): ChartAssetRendererInterface
+    {
+        return new ChartAssetRenderer();
+    }
+
     /**
      * @return array<\Spryker\Shared\Chart\Dependency\Plugin\TwigChartFunctionPluginInterface>
      */

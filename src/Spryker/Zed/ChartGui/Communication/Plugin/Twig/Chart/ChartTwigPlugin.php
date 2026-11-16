@@ -20,9 +20,4 @@ class ChartTwigPlugin extends AbstractChartTwigPlugin
      * @var string
      */
     public const TWIG_FUNCTION_NAME = 'chart';
-
-    protected function getTemplateName(): string
-    {
-        return '@ChartGui/Chart/chart.twig';
-    }
 }

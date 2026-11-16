@@ -1,0 +1,25 @@
+{% block cartesianTemplate %}
+    <template data-chart-template="cartesian">
+        <div class="chart-plot chart-plot--cartesian position-relative mt-3">
+            <div class="position-absolute top-0 start-0 w-100 h-100" data-chart-slot="canvas"></div>
+        </div>
+    </template>
+{% endblock %}
+
+{% block cartesianTooltipTemplate %}
+    <template data-chart-template="cartesian-tooltip">
+        <div>
+            <div data-chart-slot="heading"></div>
+            <div data-chart-slot="rows"></div>
+        </div>
+    </template>
+{% endblock %}
+
+{% block cartesianTooltipRowTemplate %}
+    <template data-chart-template="cartesian-tooltip-row">
+        <div class="d-flex align-items-center gap-1">
+            <span class="chart-marker flex-shrink-0 rounded-circle" data-chart-slot="marker"></span>
+            <span><span data-chart-slot="name"></span>: <span data-chart-slot="value"></span></span>
+        </div>
+    </template>
+{% endblock %}

@@ -1,0 +1,85 @@
+/**
+ * Copyright (c) 2016-present Spryker Systems GmbH. All rights reserved.
+ * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
+ */
+
+.chart-plot--cartesian {
+    flex-grow: 1;
+    min-height: 20rem;
+}
+
+.chart-plot--daily-bar {
+    flex-grow: 1;
+    min-height: 15rem;
+}
+
+.chart-ranking {
+    --chart-ranking-surface: var(--ins-card-bg, var(--bs-card-bg, #fff));
+    --chart-ranking-shadow: color-mix(in srgb, var(--ins-body-color, var(--bs-body-color, #212529)) 18%, transparent);
+    max-height: 19rem;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    scrollbar-gutter: stable;
+    padding-inline-end: 0.75rem;
+    background:
+        linear-gradient(var(--chart-ranking-surface) 30%, transparent) top / 100% 2.5rem,
+        linear-gradient(transparent, var(--chart-ranking-surface) 70%) bottom / 100% 2.5rem,
+        radial-gradient(farthest-side at 50% 0, var(--chart-ranking-shadow), transparent) top / 100% 0.75rem,
+        radial-gradient(farthest-side at 50% 100%, var(--chart-ranking-shadow), transparent) bottom / 100% 0.75rem;
+    background-repeat: no-repeat;
+    background-attachment: local, local, scroll, scroll;
+}
+
+.chart-plot--pie,
+.chart-plot--order-status {
+    height: 11.5rem;
+}
+
+.chart__title {
+    font-size: 15px;
+    text-transform: none;
+}
+
+.chart-state__icon {
+    font-size: 3rem;
+}
+
+.chart-marker {
+    width: 0.625rem;
+    height: 0.625rem;
+}
+
+.chart-legend {
+    max-height: 7.5rem;
+}
+
+.chart-legend__row {
+    height: 2.5rem;
+}
+
+.chart-legend__share {
+    width: 3.5rem;
+}
+
+.chart-ranking__rank {
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+.chart-ranking__product {
+    flex-basis: 15rem;
+    min-width: 0;
+}
+
+.chart-ranking__bar {
+    padding-inline-start: 2.5rem;
+    min-width: 6rem;
+}
+
+.chart-ranking .chart-ranking__track {
+    height: 0.5rem;
+}
+
+.chart-ranking__count {
+    min-width: 2rem;
+}

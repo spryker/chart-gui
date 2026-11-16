@@ -1,0 +1,17 @@
+{% block emptyStateTemplate %}
+    <template data-chart-template="empty-state">
+        <div class="d-flex flex-column flex-grow-1 align-items-center justify-content-center gap-2 mt-3 py-4 text-center text-body-secondary">
+            <i class="chart-state__icon material-symbols-outlined" aria-hidden="true">bar_chart</i>
+            <span class="fw-medium">{{ 'No data to display' | trans }}</span>
+        </div>
+    </template>
+{% endblock %}
+
+{% block errorStateTemplate %}
+    <template data-chart-template="error-state">
+        <div class="d-flex flex-column flex-grow-1 align-items-center justify-content-center gap-2 mt-3 py-4 text-center text-body-secondary" role="alert">
+            <i class="chart-state__icon material-symbols-outlined" aria-hidden="true">error</i>
+            <span class="fw-medium">{{ 'Chart could not be loaded' | trans }}</span>
+        </div>
+    </template>
+{% endblock %}

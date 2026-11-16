@@ -21,8 +21,5 @@ class PieChartTwigPlugin extends AbstractChartTwigPlugin
      */
     public const TWIG_FUNCTION_NAME = 'pieChart';
 
-    protected function getTemplateName(): string
-    {
-        return '@ChartGui/Chart/pie-chart.twig';
-    }
+    protected const string CHART_KIND = 'pie';
 }

@@ -1,0 +1,40 @@
+{% block dailyBarTemplate %}
+    <template data-chart-template="daily-bar">
+        <div class="chart-plot chart-plot--daily-bar position-relative mt-3">
+            <div class="position-absolute top-0 start-0 w-100 h-100" data-chart-slot="canvas"></div>
+        </div>
+    </template>
+{% endblock %}
+
+{% block dailySubtitleTemplate %}
+    <template data-chart-template="daily-subtitle">
+        <div class="small text-body-secondary">{{ 'Daily orders' | trans }} · <span data-chart-slot="period"></span></div>
+    </template>
+{% endblock %}
+
+{% block dailySummaryTemplate %}
+    <template data-chart-template="daily-summary">
+        <div class="d-flex flex-wrap align-items-baseline column-gap-3 mt-3">
+            <span class="fs-2 fw-semibold lh-1" data-chart-slot="total"></span>
+            <span class="small text-body-secondary">{{ 'Daily average' | trans }} <span data-chart-slot="average"></span></span>
+        </div>
+    </template>
+{% endblock %}
+
+{% block dailyTooltipTemplate %}
+    <template data-chart-template="daily-tooltip">
+        <div>
+            <div data-chart-slot="day"></div>
+            <div class="fw-semibold" data-chart-slot="count"></div>
+        </div>
+    </template>
+{% endblock %}
+
+{% block orderCountTemplate %}
+    <template data-chart-template="order-count">
+        <span>
+            <span data-chart-plural="one">{{ '%count% order' | trans }}</span>
+            <span data-chart-plural="other">{{ '%count% orders' | trans }}</span>
+        </span>
+    </template>
+{% endblock %}

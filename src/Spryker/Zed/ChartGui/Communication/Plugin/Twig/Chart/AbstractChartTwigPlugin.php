@@ -8,7 +8,6 @@
 namespace Spryker\Zed\ChartGui\Communication\Plugin\Twig\Chart;
 
 use Spryker\Shared\Chart\ChartPluginCollection\Exception\ChartPluginNotFoundException;
-use Spryker\Shared\Chart\Dependency\Plugin\ChartLayoutablePluginInterface;
 use Spryker\Shared\Chart\Dependency\Plugin\ChartPluginInterface;
 use Spryker\Shared\Chart\Dependency\Plugin\TwigChartFunctionPluginInterface;
 use Spryker\Zed\Kernel\Communication\AbstractPlugin;
@@ -27,6 +26,8 @@ abstract class AbstractChartTwigPlugin extends AbstractPlugin implements TwigCha
      * @var string
      */
     public const TWIG_FUNCTION_NAME = 'chart';
+
+    protected const string CHART_KIND = 'chart';
 
     /**
      * {@inheritDoc}
@@ -72,35 +73,35 @@ abstract class AbstractChartTwigPlugin extends AbstractPlugin implements TwigCha
     public function renderChart(Environment $twig, $chartPluginName, $dataIdentifier = null): string
     {
         $context = $this->getChartContext($chartPluginName, $dataIdentifier);
-        $rendered = $twig->render($this->getTemplateName(), $context);
 
-        return $rendered;
+        return $twig->render($this->getTemplateName(), $context);
     }
 
-    abstract protected function getTemplateName(): string;
+    protected function getTemplateName(): string
+    {
+        return '@ChartGui/Chart/chart.twig';
+    }
 
     /**
      * @param string $chartPluginName
      * @param string|null $dataIdentifier
      *
-     * @return array
+     * @return array<string, mixed>
      */
     protected function getChartContext($chartPluginName, $dataIdentifier): array
     {
-        $chartPlugin = $this->resolveChartPluginByName($chartPluginName);
+        $chartDataTransfer = $this->resolveChartPluginByName($chartPluginName)->getChartData($dataIdentifier);
 
-        $context = [
-            'data' => $chartPlugin->getChartData($dataIdentifier),
-            'layout' => $this->getConfig()->getDefaultChartLayout(),
+        return [
+            'data' => $chartDataTransfer,
+            'chartKind' => static::CHART_KIND,
+            'chartView' => $this->getFactory()->createChartViewResolver()->resolveChartView($chartDataTransfer, static::CHART_KIND),
         ];
-
-        if ($chartPlugin instanceof ChartLayoutablePluginInterface) {
-            $context['layout'] = $chartPlugin->getChartLayout();
-        }
-
-        return $context;
     }
 
+    /**
+     * @return array<string, mixed>
+     */
     protected function getDefaultTwigOptions(): array
     {
         return [

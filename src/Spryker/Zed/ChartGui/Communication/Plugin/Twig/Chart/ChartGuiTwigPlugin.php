@@ -11,6 +11,7 @@ use Spryker\Service\Container\ContainerInterface;
 use Spryker\Shared\TwigExtension\Dependency\Plugin\TwigPluginInterface;
 use Spryker\Zed\Kernel\Communication\AbstractPlugin;
 use Twig\Environment;
+use Twig\TwigFunction;
 
 /**
  * @method \Spryker\Zed\ChartGui\Communication\ChartGuiCommunicationFactory getFactory()
@@ -20,7 +21,17 @@ use Twig\Environment;
 class ChartGuiTwigPlugin extends AbstractPlugin implements TwigPluginInterface
 {
     /**
+     * @api
+     *
+     * @var string
+     */
+    public const string TWIG_FUNCTION_NAME_CHART_ASSETS = 'chartAssets';
+
+    /**
      * {@inheritDoc}
+     * - Registers the `chartAssets` function, which renders the chart stylesheet and script once per Twig environment.
+     * - Registers the `chartGuiAssetsRendered` Twig global that `chartAssets` keeps its state in.
+     * - Registers the functions of the `TwigChartFunctionPluginInterface` plugins.
      *
      * @api
      *
@@ -31,6 +42,8 @@ class ChartGuiTwigPlugin extends AbstractPlugin implements TwigPluginInterface
      */
     public function extend(Environment $twig, ContainerInterface $container): Environment
     {
+        $twig = $this->getFactory()->createChartAssetRenderer()->registerRenderState($twig);
+
         return $this->registerChartTwigFunctions($twig);
     }
 
@@ -48,11 +61,23 @@ class ChartGuiTwigPlugin extends AbstractPlugin implements TwigPluginInterface
      */
     protected function getChartTwigFunctions(): array
     {
-        $functions = [];
+        $functions = [$this->createChartAssetsTwigFunction()];
         foreach ($this->getFactory()->getTwigChartFunctionPlugins() as $twigFunctionPlugin) {
             $functions = array_merge($functions, $twigFunctionPlugin->getChartFunctions());
         }
 
         return $functions;
+    }
+
+    protected function createChartAssetsTwigFunction(): TwigFunction
+    {
+        return new TwigFunction(
+            static::TWIG_FUNCTION_NAME_CHART_ASSETS,
+            [$this->getFactory()->createChartAssetRenderer(), 'render'],
+            [
+                'is_safe' => ['html'],
+                'needs_environment' => true,
+            ],
+        );
     }
 }

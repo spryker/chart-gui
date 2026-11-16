@@ -1,0 +1,30 @@
+{% block rankingSubtitleTemplate %}
+    <template data-chart-template="ranking-subtitle">
+        <div class="small text-body-secondary">{{ 'Top %count% of ordered products' | trans }}</div>
+    </template>
+{% endblock %}
+
+{% block rankingTemplate %}
+    <template data-chart-template="ranking">
+        <ol class="chart-ranking list-unstyled mb-0 mt-3" data-chart-slot="rows"></ol>
+    </template>
+{% endblock %}
+
+{% block rankingRowTemplate %}
+    <template data-chart-template="ranking-row">
+        <li class="d-flex flex-wrap flex-md-nowrap align-items-center column-gap-3 row-gap-1 border-top py-2">
+            <span class="chart-ranking__rank d-inline-flex align-items-center justify-content-center flex-shrink-0 rounded small fw-semibold bg-primary-subtle text-primary-emphasis" data-chart-slot="highlighted-rank"></span>
+            <span class="chart-ranking__rank d-inline-flex align-items-center justify-content-center flex-shrink-0 rounded small fw-semibold bg-body-tertiary text-body-secondary" data-chart-slot="rank"></span>
+            <div class="chart-ranking__product flex-grow-1 flex-md-grow-0 text-truncate">
+                <div class="fw-medium text-truncate" data-chart-slot="title"></div>
+                <div class="small text-body-secondary text-truncate">{{ 'SKU' | trans }} <span data-chart-slot="sku"></span></div>
+            </div>
+            <div class="chart-ranking__bar col-12 col-md order-last order-md-0 ps-md-0">
+                <div class="chart-ranking__track progress rounded-pill" role="progressbar" aria-valuemin="0" data-chart-slot="track">
+                    <div class="progress-bar rounded-pill" data-chart-slot="fill"></div>
+                </div>
+            </div>
+            <span class="chart-ranking__count flex-shrink-0 fw-semibold text-end ms-md-4" data-chart-slot="count"></span>
+        </li>
+    </template>
+{% endblock %}

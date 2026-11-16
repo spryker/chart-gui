@@ -1,0 +1,20 @@
+{% block pieTemplate %}
+    <template data-chart-template="pie">
+        <div class="chart-plot chart-plot--pie position-relative mt-3">
+            <div class="position-absolute top-0 start-0 w-100 h-100" data-chart-slot="canvas"></div>
+        </div>
+    </template>
+{% endblock %}
+
+{% block pieCenterTemplate %}
+    <template data-chart-template="pie-center">
+        <div class="position-absolute top-0 start-0 w-100 h-100 d-flex flex-column align-items-center justify-content-center pe-none">
+            <span class="fs-3 fw-semibold lh-sm" data-chart-slot="total"></span>
+            <span class="small text-body-secondary">{{ 'Total' | trans }}</span>
+        </div>
+    </template>
+{% endblock %}
+
+{% block pieLegendTemplates %}
+    {% include '@ChartGui/Chart/_partials/pie-legend.twig' %}
+{% endblock %}
